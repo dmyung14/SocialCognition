@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "interaction-recon"
+version = "0.2.0"
+description = "Interaction reconstruction and MuJoCo kinematic reference"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.15",
+    "opencv-contrib-python>=4.10",
+    "mediapipe>=0.10",
+    "imageio-ffmpeg>=0.6",
+    "mujoco>=3.13,<4",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=9"]
+
+[project.scripts]
+interaction-recon = "interaction_recon.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["interaction_recon*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
